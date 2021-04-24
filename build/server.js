@@ -13,7 +13,7 @@ const routes_1 = require("./src/routes");
 dotenv_1.default.config();
 const app = express_1.default();
 const server = http_1.default.createServer(app);
-const port = parseInt(process.env.PORT || "0") || 4000;
+const port = parseInt(process.env.PORT || "0") || 4001;
 const hostname = "127.0.0.1";
 app.use(morgan_1.default("dev"));
 app.use(express_1.default.json());

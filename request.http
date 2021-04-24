@@ -1,7 +1,7 @@
-http://localhost:4000/entries/adf29cd9-5713-4b38-af50-e5386ad98a42
+http://localhost:4001/entries/adf29cd9-5713-4b38-af50-e5386ad98a42
 
 ###
-POST http://localhost:4000/entries/publish
+POST http://localhost:4001/entries/publish
 Content-Type: application/json
 
 {

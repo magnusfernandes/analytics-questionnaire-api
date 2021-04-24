@@ -13,7 +13,7 @@ dotenv.config();
 const app = express();
 const server = http.createServer(app);
 
-const port = parseInt(process.env.PORT || "0") || 4000;
+const port = parseInt(process.env.PORT || "0") || 4001;
 const hostname: string = "127.0.0.1";
 
 app.use(logger("dev"));
