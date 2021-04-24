@@ -14,9 +14,9 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "survey_production",
+    "username": "assistadmin",
+    "password": "zzzpqow1029",
+    "database": "assist_production",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
