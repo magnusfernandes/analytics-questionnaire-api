@@ -20,7 +20,7 @@ module.exports = {
       key: "../analyticsassist.pem",
       user: "ubuntu",
       host: "13.234.189.26",
-      ref: "origin/master",
+      ref: "origin/main",
       repo: "git@github.com:magnusfernandes/analytics-questionnaire-api.git",
       path: "/home/ubuntu/apps/survey-api",
       "post-deploy": "npm install && pm2 reload ecosystem.config.js --env production"
