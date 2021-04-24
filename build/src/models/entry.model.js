@@ -16,6 +16,9 @@ function EntryFactory(config) {
             type: sequelize_1.DataTypes.UUID,
             unique: true,
         },
+        test: {
+            type: sequelize_1.DataTypes.STRING,
+        },
         version: {
             type: sequelize_1.DataTypes.STRING,
         },

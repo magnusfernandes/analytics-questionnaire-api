@@ -15,6 +15,16 @@ export class EntryController extends BaseController {
       this.respondWithError(err);
     }
   }
+
+  async fetchSubmission() {
+    try {
+      let respPayload = await EntryActions.fetchSubmission(this.request.params);
+      this.respondWithSuccess(respPayload);
+    } catch (err) {
+      console.error(err);
+      this.respondWithError(err);
+    }
+  }
 }
 
 export default EntryController;

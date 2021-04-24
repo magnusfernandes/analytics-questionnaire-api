@@ -31,6 +31,18 @@ class EntryController extends base_controller_1.default {
             }
         });
     }
+    fetchSubmission() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                let respPayload = yield actions_1.EntryActions.fetchSubmission(this.request.params);
+                this.respondWithSuccess(respPayload);
+            }
+            catch (err) {
+                console.error(err);
+                this.respondWithError(err);
+            }
+        });
+    }
 }
 exports.EntryController = EntryController;
 exports.default = EntryController;

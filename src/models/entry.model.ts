@@ -5,12 +5,14 @@ import {
   Sequelize,
   DataTypes,
   HasManyCreateAssociationMixin,
+  HasManyGetAssociationsMixin,
 } from "sequelize";
 import { ResponseModel } from "./response.model";
 
 export interface EntryAttributes {
   id: number;
   user: string;
+  test: string;
   version: string;
   createdAt?: Date;
   updatedAt?: Date;
@@ -24,6 +26,7 @@ export class EntryModel
   implements EntryAttributes {
   id!: number;
   user!: string;
+  test!: string;
   version!: string;
 
   // timestamps!
@@ -31,6 +34,7 @@ export class EntryModel
   readonly updatedAt!: Date;
 
   public createResponse!: HasManyCreateAssociationMixin<ResponseModel>;
+  public getResponses!: HasManyGetAssociationsMixin<ResponseModel>;
 }
 
 export type EntryStatic = typeof Model & {
@@ -47,6 +51,9 @@ export function EntryFactory(config: Sequelize) {
     user: {
       type: DataTypes.UUID,
       unique: true,
+    },
+    test: {
+      type: DataTypes.STRING,
     },
     version: {
       type: DataTypes.STRING,

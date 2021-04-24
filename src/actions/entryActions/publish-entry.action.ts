@@ -4,8 +4,9 @@ import { Entry, EntryModel, Response } from "../../models";
 export const publishEntry = async (requestBody: any) => {
   validateRequest(requestBody);
 
-  const { id, version, data } = requestBody;
+  const { id, test, version, data } = requestBody;
 
+  console.log("Found ID", id);
   let entry = await Entry.findOne({
     where: {
       user: id,
@@ -13,10 +14,12 @@ export const publishEntry = async (requestBody: any) => {
   });
 
   if (entry) {
+    console.log("Entry found", entry.id);
     await loadResponse(entry, data);
   } else {
     entry = await Entry.create({
       user: id,
+      test,
       version,
     });
     await loadResponse(entry, data);
@@ -31,6 +34,7 @@ async function loadResponse(entry: EntryModel, data: any[]) {
     let response = await Response.findOne({
       where: {
         question: item.question,
+        entryId: entry.id,
       },
     });
     if (response) {
@@ -48,6 +52,9 @@ async function loadResponse(entry: EntryModel, data: any[]) {
 }
 
 function validateRequest(request: any) {
+  if (!request.test) {
+    throw new BadRequestError("Missing test parameter");
+  }
   if (!request.version) {
     throw new BadRequestError("Missing version parameter");
   }

@@ -12,6 +12,9 @@ module.exports = {
         type: Sequelize.UUID,
         unique: true
       },
+      test: {
+        type: Sequelize.STRING
+      },
       version: {
         type: Sequelize.STRING
       },

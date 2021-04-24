@@ -14,18 +14,21 @@ const errors_1 = require("../../errors");
 const models_1 = require("../../models");
 const publishEntry = (requestBody) => __awaiter(void 0, void 0, void 0, function* () {
     validateRequest(requestBody);
-    const { id, version, data } = requestBody;
+    const { id, test, version, data } = requestBody;
+    console.log("Found ID", id);
     let entry = yield models_1.Entry.findOne({
         where: {
             user: id,
         },
     });
     if (entry) {
+        console.log("Entry found", entry.id);
         yield loadResponse(entry, data);
     }
     else {
         entry = yield models_1.Entry.create({
             user: id,
+            test,
             version,
         });
         yield loadResponse(entry, data);
@@ -40,6 +43,7 @@ function loadResponse(entry, data) {
             let response = yield models_1.Response.findOne({
                 where: {
                     question: item.question,
+                    entryId: entry.id,
                 },
             });
             if (response) {
@@ -58,6 +62,9 @@ function loadResponse(entry, data) {
     });
 }
 function validateRequest(request) {
+    if (!request.test) {
+        throw new errors_1.BadRequestError("Missing test parameter");
+    }
     if (!request.version) {
         throw new errors_1.BadRequestError("Missing version parameter");
     }
