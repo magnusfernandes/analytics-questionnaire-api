@@ -16,7 +16,7 @@
     "production": {
         "username": "assistadmin",
         "password": "zzzpqow1029",
-        "database": "assist_production",
+        "database": "survey_production",
         "host": "127.0.0.1",
         "dialect": "postgres"
     }
